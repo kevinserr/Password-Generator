@@ -4,32 +4,20 @@ var number = "0123456789";
 var symbols = "!@#%^&*";
 
 var passwordsOptions = [
-    lower.charAt(getRandomInt(26))+upper.charAt(getRandomInt(26))+number.charAt(getRandomInt(10))+symbols.charAt(getRandomInt(6)),
-    upper.charAt(getRandomInt(26))+lower.charAt(getRandomInt(26))+number.charAt(getRandomInt(10))+symbols.charAt(getRandomInt(6)),
-    number.charAt(getRandomInt(10))+symbols.charAt(getRandomInt(6))+upper.charAt(getRandomInt(26))+lower.charAt(getRandomInt(26)),
-    symbols.charAt(getRandomInt(6))+upper.charAt(getRandomInt(26))+lower.charAt(getRandomInt(26))+number.charAt(getRandomInt(10))
-]
+    lower.charAt(getRandomInt(lower.length))+upper.charAt(getRandomInt(upper.length))+symbols.charAt(getRandomInt(symbols.length))+number.charAt(getRandomInt(number.length)),
+    upper.charAt(getRandomInt(upper.length))+lower.charAt(getRandomInt(lower.length))+number.charAt(getRandomInt(number.length))+symbols.charAt(getRandomInt(symbols.length)),
+    number.charAt(getRandomInt(number.length))+symbols.charAt(getRandomInt(symbols.length))+upper.charAt(getRandomInt(upper.length))+lower.charAt(getRandomInt(lower.length)),
+    symbols.charAt(getRandomInt(symbols.length))+upper.charAt(getRandomInt(upper.length))+lower.charAt(getRandomInt(lower.length))+number.charAt(getRandomInt(number.length)),
+    upper.charAt(getRandomInt(upper.length))+number.charAt(getRandomInt(number.length))+symbols.charAt(getRandomInt(symbols.length))+lower.charAt(getRandomInt(lower.lenght))
+];
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
 function myFunction(form){
-    var num = form.passwords.value;
-    var array = [];
-    if(num<0){
-        console.log(num);
-        document.getElementById("output").innerHTML = "Invalid Number";
-    }
-    else{
-        for (i =0; i <num; i++){
-            var pass1 = passwordsOptions[getRandomInt(4)];
-            pass1 = pass1+ passwordsOptions[getRandomInt(4)];
-            console.log(pass1);
-            array[i] = " Password "+(i+1)+ ": "+pass1;
-        }
-        document.getElementById("output").innerHTML = array.toString();
-    }
-
-
+    var pass1 = passwordsOptions[getRandomInt(passwordsOptions.length)];
+    pass1 = pass1+ passwordsOptions[getRandomInt(passwordsOptions.length)];
+    console.log(pass1);
+    document.getElementById("output").innerHTML = "Password:"+pass1;
 }
